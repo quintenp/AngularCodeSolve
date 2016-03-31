@@ -1,0 +1,97 @@
+<div ng-if="view == 'list'">
+  <div class="">
+    <div class=""><h1 class="">Employee Directory</h1></div>
+  </div>
+  <div class="form-group">
+    <input ng-model="query" type="search" placeholder="search" class="form-control">
+  </div>
+  <div style="top:120px;">
+    <table class="table table-hover">
+      <tr><th>Photo</th><th>Name</th><th>Title</th><th>Details</th></tr>
+      <tr ng-repeat="employee in employees | filter:query | orderBy:orderProp" class="">
+        <td><img ng-src="photos/{{employee.picture}}" width="50px"></td>
+        <td>{{employee.firstName}} {{employee.lastName}}</td>
+        <td>{{employee.title}}</td>
+        <td>
+          <button ng-click="go('/employees/' + employee.id)" class="btn btn-primary">
+            <span class="badge">{{employee.reports}}</span>
+            <span class="glyphicon glyphicon-chevron-right"></span>
+          </button>
+        </td>
+      </tr>
+    </table>
+  </div>
+</div>
+<div ng-if="view == 'details' || view == 'reports'">
+  <div class="row">
+    <div class="col-md-1" style="margin-top: 20px;">
+          <button ng-click="back()" class="btn btn-primary">
+            <span class="glyphicon glyphicon-chevron-left"></span>
+          </button>
+      </div>
+      <div class="col-md-11">
+          <h1 class="" ng-if="view == 'details'">Employee</h1>
+          <h1 class="" ng-if="view == 'reports'">Direct Reports</h1>
+      </div>
+  </div>
+</div>
+<div ng-if="view == 'details'">
+  <div class="panel panel-default">
+    <div class="panel-heading">
+      <h3 class="panel-title">{{employee.firstName}} {{employee.lastName}}</h3>
+    </div>
+    <div class="panel-body">
+      <img ng-src="photos/{{employee.picture}}" class="employee-image">
+      <table class="table table-hover">
+        <tr>
+          <td colspan="2"><h2>{{employee.title}}</h2></td>
+        </tr>
+        <tr>
+          <td colspan="2"><h2>{{employee.city}}</h2></td>
+        </tr>
+        <tr ng-show="employee.managerId">
+          <td class="col-md-3">Manager</td><td class="col-md-9"><a href="" ng-click="go('employees/' + employee.managerId)">{{employee.managerName}}</a></td>
+        </tr>
+        <tr ng-show="employee.reports">
+          <td class="col-md-3">Direct Reports</td>
+          <td class="col-md-9"><a href="" ng-click="go('employees/' + employee.id + '/reports')">{{employee.reports}}</a></td>
+        </tr>
+        <tr ng-show="employee.officePhone">
+          <td class="col-md-3">Call Office</td>
+          <td class="col-md-9"><a href="tel:{{employee.officePhone}}">{{employee.officePhone}}</a></td>
+        </tr>
+        <tr ng-show="employee.cellPhone">
+          <td class="col-md-3">Call Cell</td>
+          <td class="col-md-9"><a href="tel:{{employee.cellPhone}}">{{employee.cellPhone}}</a></td>
+        </tr>
+        <tr ng-show="employee.cellPhone">
+          <td class="col-md-3">SMS</td>
+          <td class="col-md-9"><a href="sms:{{employee.cellPhone}}">{{employee.cellPhone}}</a></td>
+        </tr>
+        <tr ng-show="employee.email">
+          <td class="col-md-3">Email address</td>
+          <td class="col-md-9"><a href="mailto:{{employee.email}}">{{employee.email}}</a></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+</div>
+<div ng-if="view == 'reports'">
+
+    <div style="top:120px;">
+        <table class="table table-hover">
+            <tr><th>Photo</th><th>Name</th><th>Title</th><th>Details</th></tr>
+            <tr ng-repeat="employee in employees | filter:query | orderBy:orderProp" class="">
+              <td><img ng-src="photos/{{employee.picture}}" width="50px"></td>
+              <td>{{employee.firstName}} {{employee.lastName}}</td>
+              <td>{{employee.title}}</td>
+              <td>
+                <button ng-click="go('/employees/' + employee.id)" class="btn btn-primary">
+                  <span class="badge">{{employee.reports}}</span>
+                  <span class="glyphicon glyphicon-chevron-right"></span>
+                </button>
+              </td>
+            </tr>
+        </table>
+    </div>
+</div>
