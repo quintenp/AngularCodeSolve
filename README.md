@@ -13,7 +13,7 @@ _I will give a brief summary of some of the problems I spotted and how I address
 #### Overall application structure was lacking best practices
 **Description**: If you have a look at app.js you can see all the major modular functionality of the application was set here.  
 
-**Solution**: What I need to do is decouple the factories / controllers / functions / data into their own files and place them into their relevant folder structures which were defined previously.
+**Solution**: What I need to do is decouple the factories / controllers / functions / data into their own files and place them into their relevant folder structures which were defined previously. Because the app is so small I decided to keep the factories as well as the directives in a single js file to reduce app load time if however the app grows it needs to be refactored into seperate files immediately.
 
 #### Routing configuration always defaulted to genericRT
 **Description**: Regardless of the route the app always refers the user to the default container not leveraging the power of the routing module angular provides.  Because of this the app not using routing properly a lot of conditionals were implemented to switch views based on current view state in the html.  
