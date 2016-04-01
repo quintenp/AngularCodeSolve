@@ -1,30 +1,32 @@
 <!doctype html>
 <html lang="en" ng-app="app">
+
 <head>
-  <title>Employees directory</title>
-  <meta charset="utf-8">
-  <link href="content/css/bootstrap.min.css" rel="stylesheet">
-  <link href="content/css/main.css" rel="stylesheet">
-
-  <script src="framework/angular/angular.min.js"></script>
-  <script src="framework/angular/angular-touch.min.js"></script>
-  <script src="framework/angular/angular-resource.min.js"></script>
-  <script src="framework/angular/angular-animate.min.js"></script>
-  <script src="framework/angular/angular-route.min.js"></script>
-
-  <script src="app/app.js"></script>
-
-  <script src="app/employees-directory/controllers/main.js"></script>
-  <script src="app/employees-directory/controllers/employee.js"></script>
-  
-  <script src="app/directives.js"></script>
-  <script src="app/factories.js"></script>
-  <script src="app/services/employee.service.js"></script>
+    <title>Employees directory</title>
+    <meta charset="utf-8">
+    <link href="content/css/bootstrap.min.css" rel="stylesheet">
+    <link href="content/css/main.css" rel="stylesheet">
 </head>
 
 <body ng-controller="MainCtrl">
 
-<div ng-view ng-class="slider"></div>
+    <div ng-view ng-class="slider"></div>
 
+    <script src="framework/angular/angular.min.js"></script>
+    <script src="framework/angular/angular-touch.min.js"></script>
+    <script src="framework/angular/angular-resource.min.js"></script>
+    <script src="framework/angular/angular-animate.min.js"></script>
+    <script src="framework/angular/angular-route.min.js"></script>
+
+    <script src="app/app.js"></script>
+
+    <script src="app/employees-directory/controllers/main.js"></script>
+    <script src="app/employees-directory/controllers/employee.js"></script>
+
+    <script src="app/directives.js"></script>
+    <script src="app/factories.js"></script>
+    <script src="app/common/route_constants.js"></script>
+    <script src="app/services/employee.service.js"></script>
 </body>
+
 </html>

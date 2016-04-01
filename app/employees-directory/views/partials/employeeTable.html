@@ -1,16 +1,14 @@
-
-        <table class="table table-hover">
-            <tr><th>Photo</th><th>Name</th><th>Title</th><th>Details</th></tr>
-            <tr ng-repeat="employee in employees | filter:query | orderBy:orderProp">
-              <td><img ng-src="content/photos/{{employee.picture}}" class="employee-table-picWidth"></td>
-              <td ng-bind="employee.firstName + ' ' + employee.lastName"></td>
-              <td ng-bind="employee.title"></td>
-              <td>
-                <button ng-click="go('/employees/' + employee.id)" class="btn btn-primary">
-                  <span class="badge" ng-bind="employee.reports"></span>
-                  <span class="glyphicon glyphicon-chevron-right"></span>
-                </button>
-				<employee-link empid='employee.id' linkType='details' reports='employee.reports'></employee-link>
-              </td>
-            </tr>
-        </table>
+<table class="table table-hover">
+    <tr>
+        <th>Photo</th>
+        <th>Name</th>
+        <th>Title</th>
+        <th>Details</th>
+    </tr>
+    <tr ng-repeat="employee in employees | filter:query | orderBy:orderProp">
+        <td><img ng-src="content/photos/{{employee.picture}}" class="employee-table-picWidth"></td>
+        <td ng-bind="employee.firstName + ' ' + employee.lastName"></td>
+        <td ng-bind="employee.title"></td>
+        <td><employee-go-button empid='employee.id' reports='employee.reports'></employee-go-button></td>
+    </tr>
+</table>

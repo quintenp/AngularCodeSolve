@@ -1,2 +1,2 @@
 # AngularCodeSolve
-AngularCodeSolve
+Angular Fault Finding Exercise
