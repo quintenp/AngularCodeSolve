@@ -1,6 +1,8 @@
 angular.module('app')
     .factory('Employee', ['employeesService',
         function(employeesService) {
+            'use strict';
+            
             return {
                 query: function() {
                     return employeesService.getAllEmployees();
@@ -13,6 +15,8 @@ angular.module('app')
         }])
     .factory('Report', ['employeesService',
         function(employeesService) {
+            'use strict';
+            
             return {
                 query: function(employee) {
                     return employeesService.findByManager(parseInt(employee.employeeId));

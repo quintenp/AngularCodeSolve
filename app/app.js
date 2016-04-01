@@ -9,10 +9,10 @@ angular.module('app', [
             templateUrl: 'app/employees-directory/views/container.html',
             controller: 'EmployeeCtrl'
         }, detailRT = {
-            templateUrl: 'app/employees-directory/views/templates/employeeDetails.html',
+            templateUrl: 'app/employees-directory/views/employeeDetails.html',
             controller: 'EmployeeCtrl'
         }, reportRT = {
-            templateUrl: 'app/employees-directory/views/templates/employeeReport.html',
+            templateUrl: 'app/employees-directory/views/employeeReport.html',
             controller: 'EmployeeCtrl'
         };
 
