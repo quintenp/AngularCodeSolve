@@ -1,4 +1,4 @@
-(function(ng) {
+(function() {
     "use strict";
     
     var ROUTES = {
@@ -12,6 +12,6 @@
         }
     };
 
-    ng.module('app').constant('ROUTES', ROUTES);
+    angular.module('app').constant('ROUTES', ROUTES);
     
-}(angular));
+}());

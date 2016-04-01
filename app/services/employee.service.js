@@ -1,5 +1,4 @@
-angular.module('app')
-    .service('employeesService', function() {
+angular.module('app').service('employeesService', function() {
         var employees = [
             { "id": 1, "firstName": "Charles Montgomery", "lastName": "Burns", "managerId": 0, "managerName": "", "reports": 4, "title": "President and CEO", "department": "Engineering", "cellPhone": "+31 000 000 001", "officePhone": "+31 600 000 001", "email": "burns@the-simpsons.com", "city": "Springfield", "picture": "mr_burns.png", "twitterId": "@burns", "blog": "http://www.brightcomputing.com" },
             { "id": 2, "firstName": "Bart", "lastName": "Simpson", "managerId": 1, "managerName": "Charles Montgomery Burns", "reports": 2, "title": "VP of Marketing", "department": "Marketing", "cellPhone": "+31 000 000 002", "officePhone": "+31 600 000 002", "email": "bart@the-simpsons.com", "city": "Springfield", "picture": "bart.png", "twitterId": "@bart", "blog": "http://www.brightcomputing.com" },

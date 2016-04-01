@@ -2,8 +2,7 @@ angular.module('app', [
     'ngTouch',
     'ngRoute',
     'ngAnimate'
-])
-.config(['$routeProvider', function($routeProvider) {
+]).config(['$routeProvider', function ($routeProvider) {
         'use strict';
         var genericRT = {
             templateUrl: 'app/employees-directory/views/container.html',
