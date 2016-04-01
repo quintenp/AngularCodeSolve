@@ -1,5 +1,6 @@
-angular.module('app').directive('employeeGoLink', ['$location', '$rootScope', function($location, $rootScope) {
-    return {
+angular.module('app').directive('employeeGoLink', ['$location', '$rootScope', 'ROUTES', function($location, $rootScope, ROUTES) {
+    'use strict';
+    var goLinkDirective = {
         scope: {
             empid: '=',
             reports: '=',
@@ -16,15 +17,13 @@ angular.module('app').directive('employeeGoLink', ['$location', '$rootScope', fu
         },
         link: function(scope, element, attrs) {
             element.on('click', function() {
-                var employeePath = '/employees/';
-                var reporPath = '/reports';
                 var path = '';
 
                 if (attrs.linktype === 'report') {
-                    path = employeePath + scope.empid + reporPath;
+                    path = ROUTES.EMPLOYEE.url + scope.empid + ROUTES.REPORT.url;
                 }
                 else if (attrs.linktype === 'manager') {
-                    path = employeePath + scope.empid;
+                    path = ROUTES.EMPLOYEE.url + scope.empid;
                 }
 
                 scope.$apply(function() {
@@ -34,8 +33,12 @@ angular.module('app').directive('employeeGoLink', ['$location', '$rootScope', fu
             });
         }
     };
-}]).directive('employeeGoButton', ['$location', '$rootScope', function($location, $rootScope) {
-    return {
+
+    return goLinkDirective;
+}]).directive('employeeGoButton', ['$location', '$rootScope', 'ROUTES', function($location, $rootScope, ROUTES) {
+    'use strict';
+
+    var goButtonDirective = {
         scope: {
             empid: '=',
             reports: '='
@@ -44,10 +47,7 @@ angular.module('app').directive('employeeGoLink', ['$location', '$rootScope', fu
         template: '<button class="btn btn-primary"><span class="badge" ng-bind="reports"></span><span class="glyphicon glyphicon-chevron-right"></span></button>',
         link: function(scope, element, attrs) {
             element.on('click', function() {
-                var employeePath = '/employees/';
-                var path = '';
-                
-                path = employeePath + scope.empid;
+                var path = ROUTES.EMPLOYEE.url + scope.empid;
 
                 scope.$apply(function() {
                     $rootScope.slider = 'slider-left';
@@ -56,8 +56,11 @@ angular.module('app').directive('employeeGoLink', ['$location', '$rootScope', fu
             });
         }
     };
+
+    return goButtonDirective;
 }]).directive('backButton', ['$window', '$rootScope', function($window, $rootScope) {
-    return {
+    'use strict';
+    var backButtonDirective= {
         template: '<button class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left"></span></button>',
         link: function(scope, element, attrs) {
             element.on('click', function() {
@@ -67,5 +70,7 @@ angular.module('app').directive('employeeGoLink', ['$location', '$rootScope', fu
                 });
             });
         }
-    }
+    };
+    
+    return backButtonDirective;
 }]);

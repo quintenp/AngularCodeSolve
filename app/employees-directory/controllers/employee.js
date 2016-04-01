@@ -1,6 +1,8 @@
 angular.module('app')
     .controller('EmployeeCtrl', ['$scope', '$routeParams', 'Employee', 'Report',
         function($scope, $routeParams, Employee, Report) {
+             'use strict';
+             
             if (!$routeParams.employeeId) {
                 console.info('Visited list of employees');
                 $scope.employees = Employee.query();
