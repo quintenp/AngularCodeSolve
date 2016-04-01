@@ -1,7 +1,7 @@
 # Angular Code Solve
 Site hosted via github project hosting : http://quintenp.github.io/AngularCodeSolve/#/employees
 
-I will give a brief summary of some of the problems I spotted and how I addressed them.  I might now have listed everything here I fixed quite a bit while working on the main principals
+_I will give a brief summary of some of the problems I spotted and how I addressed them.  I might now have listed everything here I fixed quite a bit while working on the main principals_
 
 # Analysis
 
@@ -42,6 +42,7 @@ I will give a brief summary of some of the problems I spotted and how I addresse
 
 #### In the views we bound data using the angular binding {{}}
 **Description**: This works however will case a slight flicker on the page while the application is initializing. 
+
 **Solution**: I changed all the bindings to use ng-bind instead which will only bind after angular is fully initialized.
 
 #### Duplicate html found
@@ -52,6 +53,7 @@ I will give a brief summary of some of the problems I spotted and how I addresse
 
 #### Scripts in header of page
 **Description**: All the scripts were loaded from the index.html header. 
+
 **Solution**: I moved them down to the bottom of the body, because we are now using ng-bind no flickering will occur from this change.
 
 #### No Lint 
