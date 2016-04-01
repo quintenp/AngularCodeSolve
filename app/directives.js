@@ -26,17 +26,23 @@ angular.module('app').directive('employeeLink', ['$location', '$rootScope', func
                 var type = attrs.type || 'text';
                 var hasLinkType = attrs.hasOwnProperty('linktype');
                 var linktype = attrs.linktype;
-
+                
+                var employeePath = '/employees/';
+                var reporPath = '/reports';
+                
+                var path = '';
+                
                 if (linktype === 'report') {
                     $rootScope.go('/employees/' + scope.empid + '/reports');
-                    $location.url('/employees/' + scope.empid + '/reports');
-                    scope.$apply();
+                    path = employeePath + scope.empid + reporPath;
                 }
                 else if (linktype === 'details' || linktype === 'manager') {
                     $rootScope.go('/employees/' + scope.empid);
-                    $location.url('/employees/' + scope.empid);
-                    scope.$apply();
+                    path = employeePath + scope.empid;
                 }
+              
+                $location.url(path)
+                scope.$apply();
             });
         }
 
