@@ -1,7 +1,7 @@
 <div>
     <div class="row">
         <div class="col-md-1 back-button-marginTop">
-            <div ng-include="'app/employees-directory/views/partials/backButton.html'"></div>
+            <back-button></back-button>
         </div>
         <div class="col-md-11">
             <h1>Employee</h1>
@@ -27,13 +27,13 @@
                 <tr ng-show="employee.managerId">
                     <td class="col-md-3">Manager</td>
                     <td class="col-md-9">
-                        <employee-link empid='employee.managerId' linkType='manager' manager='employee.managerName'></employee-link>
+                        <employee-go-link empid='employee.managerId' linktype='manager' manager='employee.managerName'></employee-go-link>
                     </td>
                 </tr>
                 <tr ng-show="employee.reports">
                     <td class="col-md-3">Direct Reports</td>
                     <td class="col-md-9">
-                        <employee-link empid='employee.id' linkType='report' reports='employee.reports'></employee-link>
+                        <employee-go-link empid='employee.id' linktype='report' reports='employee.reports'></employee-go-link>
                     </td>
                 </tr>
                 <tr ng-show="employee.officePhone">
