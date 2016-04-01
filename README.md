@@ -59,4 +59,7 @@ _I will give a brief summary of some of the problems I spotted and how I address
 #### No Lint 
 **Solution**: I ran and applied a basic lint over all the java script
 
+#### Inline style found on html
+**Solution**: I found a few inline style rules here and there which I extracted into css classes
+
  
