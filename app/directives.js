@@ -6,7 +6,6 @@ angular.module('app').directive('employeeGoLink', ['$location', '$rootScope', 'R
             reports: '=',
             manager: '='
         },
-        transclude: true,
         template: function(element, attrs) {
             if (attrs.linktype === 'report') {
                 return '<a href=""  ng-bind="reports"></a>';
@@ -43,7 +42,6 @@ angular.module('app').directive('employeeGoLink', ['$location', '$rootScope', 'R
             empid: '=',
             reports: '='
         },
-        transclude: true,
         template: '<button class="btn btn-primary"><span class="badge" ng-bind="reports"></span><span class="glyphicon glyphicon-chevron-right"></span></button>',
         link: function(scope, element, attrs) {
             element.on('click', function() {
