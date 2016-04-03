@@ -43,10 +43,11 @@ a proper state structure using angulars built in $stateProvider._
 
 **Solution**: I changed the validation into  a simple java-script object valid check using the ! operator.
 
-#### In the views we bound data using the angular binding {{}}
+#### In the views we bound data using the angular expression binding {{}}
 **Description**: This works however will case a slight flicker on the page while the application is initializing. 
 
-**Solution**: I changed all the bindings to use ng-bind instead which will only bind after angular is fully initialized.
+**Solution**: I changed all the bindings to use ng-bind instead which will only bind after angular is fully initialized.  I also implemented the bind once :: syntax to ensure the more static content is not 
+diggested unnecessarily
 
 #### Duplicate html found
 **Solution**: In employees.html i found quite a bit of html which could be extracted into a separate partial to be reused.
