@@ -1,74 +1,100 @@
-angular.module('app').directive('employeeGoLink', ['$location', '$rootScope', 'ROUTES', function($location, $rootScope, ROUTES) {
+angular.module('app').directive('employeeGoLink', ['$location', '$rootScope', 'pathFactory', function($location, $rootScope, pathFactory) {
     'use strict';
+
+    var sliderDirection = 'slider-left';
+    var reportLinkTemplate = '<a href="" ng-bind="reports"></a>';
+    var managerLinkTemplate = '<a href="" ng-bind="manager"></a>';
+
+    var getMatchingTemplate = function(element, attrs) {
+        var linkType = attrs.linktype;
+        
+        switch (linkType) {
+            case 'report': return reportLinkTemplate;
+            case 'manager': return managerLinkTemplate;
+        }
+    };
+
+    var linkNavigation = function(scope, element, attrs) {
+        element.on('click', function() {
+            var path = '';
+            var linkType = attrs.linktype;
+
+            switch (linkType) {
+                case 'report':
+                    path = pathFactory.getEmployeeReportsPath(scope.empid);
+                    break;
+                case 'manager':
+                    path = pathFactory.getEmployeeDetailsPath(scope.empid);
+                    break;
+            }
+
+            scope.$apply(function() {
+                $rootScope.slider = sliderDirection;
+                $location.path(path);
+            });
+        });
+    };
+
     var goLinkDirective = {
+        restrict: 'E',
         scope: {
             empid: '=',
             reports: '=',
             manager: '='
         },
-        template: function(element, attrs) {
-            if (attrs.linktype === 'report') {
-                return '<a href=""  ng-bind="reports"></a>';
-            }
-            else if (attrs.linktype === 'manager') {
-                return '<a href="" ng-bind="manager"></a>';
-            }
-        },
-        link: function(scope, element, attrs) {
-            element.on('click', function() {
-                var path = '';
-
-                if (attrs.linktype === 'report') {
-                    path = ROUTES.EMPLOYEE.url + scope.empid + ROUTES.REPORT.url;
-                }
-                else if (attrs.linktype === 'manager') {
-                    path = ROUTES.EMPLOYEE.url + scope.empid;
-                }
-
-                scope.$apply(function() {
-                    $rootScope.slider = 'slider-left';
-                    $location.path(path);
-                });
-            });
-        }
+        template: getMatchingTemplate,
+        link: linkNavigation
     };
 
     return goLinkDirective;
-}]).directive('employeeGoButton', ['$location', '$rootScope', 'ROUTES', function($location, $rootScope, ROUTES) {
+}]).directive('employeeGoButton', ['$location', '$rootScope', 'pathFactory', function($location, $rootScope, pathFactory) {
     'use strict';
 
+    var sliderDirection = 'slider-left';
+    var goButtonTemplate = '<button class="btn btn-primary"><span class="badge" ng-bind="reports"></span><span class="glyphicon glyphicon-chevron-right"></span></button>';
+
+    var buttonNavigation = function(scope, element, attrs) {
+        element.on('click', function() {
+            var path = pathFactory.getEmployeeDetailsPath(scope.empid);
+
+            scope.$apply(function() {
+                $rootScope.slider = sliderDirection;
+                $location.path(path);
+            });
+        });
+    };
+
     var goButtonDirective = {
+        restrict: 'E',
         scope: {
             empid: '=',
             reports: '='
         },
-        template: '<button class="btn btn-primary"><span class="badge" ng-bind="reports"></span><span class="glyphicon glyphicon-chevron-right"></span></button>',
-        link: function(scope, element, attrs) {
-            element.on('click', function() {
-                var path = ROUTES.EMPLOYEE.url + scope.empid;
-
-                scope.$apply(function() {
-                    $rootScope.slider = 'slider-left';
-                    $location.path(path);
-                });
-            });
-        }
+        template: goButtonTemplate,
+        link: buttonNavigation
     };
 
     return goButtonDirective;
 }]).directive('backButton', ['$window', '$rootScope', function($window, $rootScope) {
     'use strict';
-    var backButtonDirective= {
-        template: '<button class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left"></span></button>',
-        link: function(scope, element, attrs) {
-            element.on('click', function() {
-                scope.$apply(function() {
-                    $rootScope.slider = 'slider-right';
-                    $window.history.back();
-                });
+
+    var sliderDirection = 'slider-right';
+    var backButtonTemplate = '<button class="btn btn-primary"><span class="glyphicon glyphicon-chevron-left"></span></button>';
+
+    var backButtonNavigation = function(scope, element, attrs) {
+        element.on('click', function() {
+            scope.$apply(function() {
+                $rootScope.slider = sliderDirection;
+                $window.history.back();
             });
-        }
+        });
     };
-    
+
+    var backButtonDirective = {
+        restrict: 'E',
+        template: backButtonTemplate,
+        link: backButtonNavigation
+    };
+
     return backButtonDirective;
 }]);

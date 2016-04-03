@@ -5,6 +5,9 @@ _I will give a brief summary of some of the problems I spotted and how I address
 
 # Analysis
 
+_While refactoring I realized on the EmployeeCtrl we are defining state by using $routeparams.  While this works for an application as small as this the next step to implement better practices should be to implement
+a proper state structure using angulars built in $stateProvider._
+
 #### Folder structure
 **Description**: Folder structure and file placement not following best practices
 
