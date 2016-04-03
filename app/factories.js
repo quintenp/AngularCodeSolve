@@ -1,22 +1,47 @@
-angular.module('app').factory('Employee', ['employeesService',
+angular.module('app').factory('employeeFactory', ['employeesService',
     function(employeesService) {
         'use strict';
 
-        return {
-            query: function() {
-                return employeesService.getAllEmployees();
-            },
-            get: function(employee) {
-                return employeesService.findById(parseInt(employee.employeeId,10));
-            }
+        var getAllEmployees = function() {
+            return employeesService.getAllEmployees();
         };
-    }]).factory('Report', ['employeesService',
+
+        var findEmployeeById = function(employee) {
+            var parsedEmployeeId = parseInt(employee.employeeId, 10);
+
+            return employeesService.findById(parsedEmployeeId);
+        };
+
+        return {
+            query: getAllEmployees,
+            get: findEmployeeById
+        };
+    }]).factory('reportFactory', ['employeesService',
         function(employeesService) {
             'use strict';
 
-            return {
-                query: function(employee) {
-                    return employeesService.findByManager(parseInt(employee.employeeId,10));
-                }
+            var findEmpByManagerId = function(employee) {
+                var parsedManagerId = parseInt(employee.employeeId, 10);
+
+                return employeesService.findByManager(parsedManagerId);
             };
+
+            return {
+                query: findEmpByManagerId
+            };
+        }]).factory('pathFactory', ['ROUTES', function(ROUTES) {
+            'use strict';
+
+            var employeeDetailsPath = function(empId) {
+                return ROUTES.EMPLOYEE_DETAILS.url.replace(':employeeId', empId);
+            };
+
+            var employeeReportsPath = function(empId) {
+                return ROUTES.EMPLOYEE_DETAILS.url.replace(':employeeId', empId) + ROUTES.REPORT_DEFAULT.url;
+            };
+
+            return {
+                getEmployeeDetailsPath: employeeDetailsPath,
+                getEmployeeReportsPath: employeeReportsPath
+            }
         }]);

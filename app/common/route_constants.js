@@ -1,17 +1,24 @@
 (function() {
     "use strict";
-    
+
     var ROUTES = {
-        'EMPLOYEE': {
-            name: "employee",
-            url: '/employees/'
+        'EMPLOYEE_DEFAULT': {
+            name: "employees",
+            url: '/employees'
         },
-        'REPORT': {
+        'EMPLOYEE_DETAILS': {
+            name: "employeeDetails",
+            url: '/employees/:employeeId'
+        },
+        'REPORT_DEFAULT': {
             name: "report",
-            url: '/report'
+            url: '/reports'
+        },
+        'REPORT_LIST': {
+            name: "reportList",
+            url: '/employees/:employeeId/:reports'
         }
     };
 
     angular.module('app').constant('ROUTES', ROUTES);
-    
-}());
+} ());
