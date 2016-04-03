@@ -2,8 +2,8 @@ angular.module('app').directive('employeeGoLink', ['$location', '$rootScope', 'p
     'use strict';
 
     var sliderDirection = 'slider-left';
-    var reportLinkTemplate = '<a href="" ng-bind="reports"></a>';
-    var managerLinkTemplate = '<a href="" ng-bind="manager"></a>';
+    var reportLinkTemplate = '<a href="" ng-bind="::reports"></a>';
+    var managerLinkTemplate = '<a href="" ng-bind="::manager"></a>';
 
     var getMatchingTemplate = function(element, attrs) {
         var linkType = attrs.linktype;
@@ -51,7 +51,7 @@ angular.module('app').directive('employeeGoLink', ['$location', '$rootScope', 'p
     'use strict';
 
     var sliderDirection = 'slider-left';
-    var goButtonTemplate = '<button class="btn btn-primary"><span class="badge" ng-bind="reports"></span><span class="glyphicon glyphicon-chevron-right"></span></button>';
+    var goButtonTemplate = '<button class="btn btn-primary"><span class="badge" ng-bind="::reports"></span><span class="glyphicon glyphicon-chevron-right"></span></button>';
 
     var buttonNavigation = function(scope, element, attrs) {
         element.on('click', function() {
