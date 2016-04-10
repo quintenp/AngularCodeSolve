@@ -10,6 +10,10 @@
             name: "employeeDetails",
             url: '/employees/:employeeId'
         },
+        'EMPLOYEE_TREE': {
+            name: "employeeTree",
+            url: '/employees/tree/:employeeId'
+        },
         'REPORT_DEFAULT': {
             name: "report",
             url: '/reports'
