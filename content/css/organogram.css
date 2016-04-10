@@ -1,0 +1,7 @@
+.tree li {
+	list-style-type: none;
+}
+
+.employee-tree-picWidth{
+    width: 30px;
+}
