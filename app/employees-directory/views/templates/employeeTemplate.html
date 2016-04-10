@@ -1,0 +1,20 @@
+<div>
+    <div class="row">
+        <div class="col-md-1 back-button-marginTop" ng-if='backbutton == "true"'>
+            <back-button></back-button>
+        </div>
+        <div class="col-md-11">
+            <h1 ng-bind="pagetitle"></h1>
+        </div>
+    </div>
+</div>
+<div>
+    <div class="panel panel-default">
+        <div class="panel-heading" ng-if='emp'>
+            <h3 class="panel-title" ng-bind="emp.firstName + ' ' + emp.lastName"></h3>
+        </div>
+        <div class="panel-body tree">
+            <div ng-transclude></div>
+        </div>
+    </div>
+</div>

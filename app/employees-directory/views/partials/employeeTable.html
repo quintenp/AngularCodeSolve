@@ -4,11 +4,17 @@
         <th>Name</th>
         <th>Title</th>
         <th>Details</th>
+        <th>Organogram</th>
     </tr>
     <tr ng-repeat="employee in employees | filter:query | orderBy:orderProp track by employee.id">
         <td><img ng-src="content/photos/{{employee.picture}}" class="employee-table-picWidth"></td>
         <td ng-bind="employee.firstName + ' ' + employee.lastName"></td>
         <td ng-bind="::employee.title"></td>
-        <td><employee-go-button empid='employee.id' reports='employee.reports'></employee-go-button></td>
+        <td>
+            <employee-go-button empid='employee.id' reports='employee.reports' linkType='details'></employee-go-button>
+        </td>
+        <td>
+            <employee-go-button empid='employee.id' reports='employee.reports' linkType='tree'></employee-go-button>
+        </td>
     </tr>
 </table>
