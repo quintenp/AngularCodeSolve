@@ -6,6 +6,7 @@
     <meta charset="utf-8">
     <link href="content/css/bootstrap.min.css" rel="stylesheet">
     <link href="content/css/main.css" rel="stylesheet">
+     <link href="content/css/organogram.css" rel="stylesheet">
 </head>
 
 <body>
@@ -18,12 +19,27 @@
     <script src="framework/angular/angular-route.min.js"></script>
 
     <script src="app/app.js"></script>
-    <script src="app/directives.js"></script>
-    <script src="app/factories.js"></script>
-    <script src="app/common/route_constants.js"></script>
-    <script src="app/services/employee.service.js"></script>
     
-    <script src="app/employees-directory/controllers/employee.js"></script>
+    <script src="app/factories/employee.factory.js"></script>
+    <script src="app/factories/report.factory.js"></script>
+    <script src="app/factories/organogram.factory.js"></script>
+    <script src="app/factories/path.factory.js"></script>
+    
+    <script src="app/common/route_constants.js"></script>
+    
+    <script src="app/services/employee.service.js"></script>
+    <script src="app/services/logging.service.js"></script>
+    
+    <script src="app/employees-directory/controllers/employee.details.js"></script>
+    <script src="app/employees-directory/controllers/employee.list.js"></script>
+    <script src="app/employees-directory/controllers/employee.reports.js"></script>
+    <script src="app/employees-directory/controllers/employee.organogram.js"></script>
+    
+    <script src="app/employees-directory/directives/backbutton.directive.js"></script>
+    <script src="app/employees-directory/directives/employee.gobutton.directive.js"></script>
+    <script src="app/employees-directory/directives/employee.golink.directive.js"></script>
+    <script src="app/employees-directory/directives/organogram.li.directive.js"></script>
+    <script src="app/employees-directory/directives/organogram.tree.directive.js"></script>
 </body>
 
 </html>

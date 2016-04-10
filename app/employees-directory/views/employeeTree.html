@@ -1,0 +1,14 @@
+
+<div ng-include="'app/employees-directory/views/partials/employeeHeader.html'" onload="title = 'Organogram'"></div>
+<div>
+    <div class="panel panel-default">
+        <div class="panel-heading">
+            <h3 class="panel-title" ng-bind="rootEmployee.firstName + ' ' + rootEmployee.lastName"></h3>
+        </div>
+        <div class="panel-body tree">
+            <img ng-src="content/photos/{{employee.picture}}" class="employee-image">
+            <organogram-tree empobj='rootEmployee'></organogram-tree >
+        </div>
+    </div>
+</div>
+
