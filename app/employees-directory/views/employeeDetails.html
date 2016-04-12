@@ -1,0 +1,49 @@
+<employee-template emp='employee' pagetitle="Employee" backbutton="true">
+    <img ng-src="content/photos/{{employee.picture}}" class="employee-image">
+    <table class="table table-hover">
+        <tr>
+            <td colspan="2">
+                <h2 ng-bind="::employee.title"></h2></td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <h2 ng-bind="::employee.city"></h2></td>
+        </tr>
+        <tr ng-show="employee.managerId">
+            <td class="col-md-3">Manager</td>
+            <td class="col-md-9">
+                <employee-go-link empid='employee.managerId' linktype='manager' manager='employee.managerName'></employee-go-link>
+            </td>
+        </tr>
+        <tr ng-show="employee.reports">
+            <td class="col-md-3">Direct Reports</td>
+            <td class="col-md-9">
+                <employee-go-link empid='employee.id' linktype='report' reports='employee.reports'></employee-go-link>
+            </td>
+        </tr>
+        <tr ng-show="employee.officePhone">
+            <td class="col-md-3">Call Office</td>
+            <td class="col-md-9">
+                <a href="tel:{{employee.officePhone}}" ng-bind="::employee.officePhone"></a>
+            </td>
+        </tr>
+        <tr ng-show="employee.cellPhone">
+            <td class="col-md-3">Call Cell</td>
+            <td class="col-md-9">
+                <a href="tel:{{employee.cellPhone}}" ng-bind="::employee.cellPhone"></a>
+            </td>
+        </tr>
+        <tr ng-show="employee.cellPhone">
+            <td class="col-md-3">SMS</td>
+            <td class="col-md-9">
+                <a href="sms:{{employee.cellPhone}}" ng-bind="::employee.cellPhone"></a>
+            </td>
+        </tr>
+        <tr ng-show="employee.email">
+            <td class="col-md-3">Email address</td>
+            <td class="col-md-9">
+                <a href="mailto:{{employee.email}}" ng-bind="::employee.email"></a>
+            </td>
+        </tr>
+    </table>
+</employee-template>

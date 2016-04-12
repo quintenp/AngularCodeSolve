@@ -1,0 +1,17 @@
+<ul>
+    <li>
+        <div>
+            <img ng-src="content/photos/{{empobj.picture}}" class="employee-image employee-tree-picWidth">
+            <employee-go-link empid='empobj.id' linktype='details' manager='empobj.firstName'></employee-go-link>
+        </div>
+        <ul>
+            <li ng-repeat='reportEmp in empobj.reports track by reportEmp.id'>
+                <div>
+                    <img ng-src="content/photos/{{reportEmp.picture}}" class="employee-image employee-tree-picWidth">
+                    <employee-go-link empid='reportEmp.id' linktype='details' manager='reportEmp.firstName'></employee-go-link>
+                </div>
+                <organogram-tree ng-repeat='reportEmpChild in reportEmp.reports track by reportEmpChild.id' empobj='reportEmpChild'></organogram-tree>
+            </li>
+        </ul>
+    </li>
+</ul>
