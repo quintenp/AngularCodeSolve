@@ -5,10 +5,12 @@ _I will give a brief summary of some of the problems I spotted and how I address
 
 # Analysis
 
-_After the discussion I refactored the application even more to get it to a much better state, modules split into seperate files, 
+_I refactored the application even more to get it to a much better state, modules split into seperate files, 
 controllers refactored and added, logging service implemented, organogram tree implemented, ui templates added to further reduce 
-duplication._
+duplication, routing cleaned up._
 
-I went for a Unordered list for the organogram as time was a bit of a problem this time around.
+I went for a Unordered list for the organogram as time was a bit of a problem this time around, I built a light weight directive calling itself recursively until the full Object hiearchy is fully displayed.  
+
+To solve the circular datastructure problem on the service side, I wrote a simple recursive data mapping algorithm to ensure all children gets mapped recursively until we have mapped each employee in the circular structure breaking out of the circle.
 
 
